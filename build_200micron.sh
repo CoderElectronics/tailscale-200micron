@@ -10,7 +10,7 @@
 # distro-specific build system.
 
 set -eu
-mkdir temp
+mkdir temp || true
 
 go="go"
 if [ -n "${TS_USE_TOOLCHAIN:-}" ]; then
