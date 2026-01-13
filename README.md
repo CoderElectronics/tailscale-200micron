@@ -1,3 +1,16 @@
+# tailscale - 200micron component fork
+
+Mainline tailscale with added build script for 200micron Buildroot. Uses the following options and features:
+- Static combined binary (tailscale and tailscaled in single file)
+- ARMV5TE support
+- "extra small" option (stripped out debug info and non-essentials)
+- Post-build UPX LZMA compression
+
+To build, simply run the following instead of the usual:
+```bash
+./build_200micron.sh
+```
+
 # Tailscale
 
 https://tailscale.com
