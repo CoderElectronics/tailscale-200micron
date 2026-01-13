@@ -8,10 +8,10 @@ Mainline tailscale with added build script for 200micron Buildroot. Uses the fol
 
 To build, simply run the following instead of the usual:
 ```bash
-./build_200micron.sh
+./build_200micron.sh # outputs tailscale.combined and tailscale.combined.compressed in temp folder
 
-# if you want an ipkg package to install post-flash (must have opkg-utils installed)
-./build_200micron_ipkg.sh
+# if you want an ipkg package to install via opkg post-flash (must have opkg-utils installed)
+./build_200micron_ipkg.sh # outputs tailscale-200micron_*.ipk in temp folder
 ```
 
 # Tailscale

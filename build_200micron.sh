@@ -10,6 +10,7 @@
 # distro-specific build system.
 
 set -eu
+mkdir temp
 
 go="go"
 if [ -n "${TS_USE_TOOLCHAIN:-}" ]; then
@@ -19,5 +20,7 @@ fi
 tags="${tags:+$tags,},$(GOOS= GOARCH= $go run ./cmd/featuretags --min --add=osrouter)"
 
 CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=5 $go build -o tailscale.combined -tags ts_include_cli,$tags -ldflags="-s -w" ./cmd/tailscaled
-cp tailscale.combined tailscale.combined.compressed
-./tool/upx-5.0.2-amd64_linux/upx --lzma --best ./tailscale.combined.compressed
+mv tailscale.combined temp/
+
+cp temp/tailscale.combined temp/tailscale.combined.compressed
+./tool/upx-5.0.2-amd64_linux/upx --lzma --best ./temp/tailscale.combined.compressed
